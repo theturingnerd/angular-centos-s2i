@@ -52,9 +52,15 @@ COPY ./s2i/bin/ /usr/libexec/s2i
 RUN yum install -y --setopt=tsflags=nodocs yum-config-manager centos-release-scl && \
     yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum install -y --setopt=tsflags=nodocs epel-release && \
-    yum install -y --setopt=tsflags=nodocs nodejs npm git && \
-    rpm -V nodejs git && \
     yum clean all -y
+
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+RUN nvm install node
+
+RUN nvm list && node -v
+
+
 
 # This default user is created in the base image
 USER 1001

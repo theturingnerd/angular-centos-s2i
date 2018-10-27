@@ -52,7 +52,7 @@ COPY ./s2i/bin/ /usr/libexec/s2i
 RUN yum install -y --setopt=tsflags=nodocs yum-config-manager rhel-server-rhscl-7-rpms && \
     yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum install -y --setopt=tsflags=nodocs epel-release && \
-    yum install -y --setopt=tsflags=nodocs nodejs git && \
+    yum install -y --setopt=tsflags=nodocs nodejs npm git && \
     rpm -V nodejs git && \
     yum clean all -y
 

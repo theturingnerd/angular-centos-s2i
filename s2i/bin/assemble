@@ -30,11 +30,11 @@ fi
 # The base image already copied the source files the home directory,
 # so we can skip that step
 echo "---> Installing the NPM dependencies (including dev)"
-scl enable nodejs 'npm install -f'
-scl enable nodejs 'npm install --only=dev'
+npm install -f
+npm install --only=dev
 
 echo "---> Building and installing the Angular application with the '$NG_CONFIG' configuration"
-scl enable nodejs "./node_modules/@angular/cli/bin/ng build --configuration=$NG_CONFIG"
+./node_modules/@angular/cli/bin/ng build --configuration=$NG_CONFIG
 # Delete all source files since they are no longer needed
 find -maxdepth 1 -not -name "dist" -not -name "." -exec rm -rf {} \;
 # Move the build files to the source root

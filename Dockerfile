@@ -10,7 +10,7 @@ Angular is a development platform for building mobile and desktop web \
 applications using Typescript/JavaScript and other languages."
 
 # Inspired from https://github.com/sclorg/s2i-nodejs-container/blob/master/8/Dockerfile
-ENV NODEJS_VERSION=8 \
+ENV NODEJS_VERSION=10 \
     NPM_CONFIG_PREFIX=$HOME/.npm-global \
     PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH
 
@@ -52,7 +52,7 @@ COPY ./s2i/bin/ /usr/libexec/s2i
 RUN yum install -y --setopt=tsflags=nodocs yum-config-manager centos-release-scl && \
     yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum install -y --setopt=tsflags=nodocs epel-release && \
-    yum install -y --setopt=tsflags=nodocs nodejs git && \
+    yum install -y --setopt=tsflags=nodocs nodejs npm git && \
     rpm -V nodejs git && \
     yum clean all -y
 
